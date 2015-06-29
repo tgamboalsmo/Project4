@@ -528,6 +528,5 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     parentElement.appendChild(elem);
   }
-  //updatePositions();
-  requestAnimationFrame(updatePositions);
+  updatePositions();
 });
