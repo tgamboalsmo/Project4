@@ -1,64 +1,68 @@
 <!DOCTYPE HTML>
 <html>
 <head>  
-  <!--- <link rel="stylesheet" href="css/style.css"> --->
-  <link rel="stylesheet" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!--- Inlined CSS from style.css --->
   <style>
   	/** {
-  outline: 1px solid red !important;
-}*/
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -box-sizing: border-box;
-}
+  		outline: 1px solid red !important;
+	}*/
+	* {
+  		-webkit-box-sizing: border-box;
+  		-moz-box-sizing: border-box;
+  		-box-sizing: border-box;
+	}
 
-body {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  background: black;
-}
+	body {
+  		font-family: "Trebuchet MS", Helvetica, sans-serif;
+  		background: black;
+	}
 
-input {
-  background: grey;
-  font-size: 18px;
-}
+	input {
+  		background: grey;
+  		font-size: 18px;
+	}
 
-form {
-  display: inline-block;
-}
+	form {
+  		display: inline-block;
+	}
 
-.centered {
-  text-align: center;
-}
+	.centered {
+  		text-align: center;
+	}
 
-#pizzaSize {
-  font-weight: 800;
-}
+	#pizzaSize {
+  		font-weight: 800;
+	}
 
-.mover {
-  position: fixed;
-  width: 256px;
-  z-index: -1;
-  will-change: transform;
-}
+	.mover {
+  		position: fixed;
+  		width: 73.333px;
+  		height: 100px;
+  		z-index: -1;
+  		will-change: transform;
+	}
 
-.randomPizzaContainer {
-  float: left;
-  display: flex;
-}
+	.randomPizzaContainer {
+  		float: left;
+  		width: 33.33%;
+  		height: 325px;
+  		display: flex;
+  		will-change: transform;
+	}
 
-.randomPizzaContainer:after {
-  content: "";
-  display: table;
-  clear:both;
-  will-change: transform;
-}
+	.randomPizzaContainer:after {
+  		content: "";
+  		display: table;
+  		clear:both;
+	}
 
- .container {
-  background-color: rgba(240, 60, 60, 0.8);
-}
+ 	.container {
+  		background-color: rgba(240, 60, 60, 0.8);
+	}	
   </style>
-  <link rel="stylesheet" href="css/bootstrap-grid.css">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <script async type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -92,7 +96,7 @@ form {
     </div>
     <div id="callToAction" class="row">
       <div class="col-md-4">
-        <img src="images/pizzeria.jpg" class="img-responsive"> <!-- Image credit to: http://commons.wikimedia.org/wiki/File:HK_TST_night_%E5%98%89%E8%98%AD%E9%81%93_Granville_Road_restaurant_Paisano's_Pizzeria_pizza_Dec-2013.JPG -->
+    	  <img src="images/pizzeria.jpg" class="img-responsive"> <!--Image credit to: http://commons.wikimedia.org/wiki/File:HK_TST_night_%E5%98%89%E8%98%AD%E9%81%93_Granville_Road_restaurant_Paisano's_Pizzeria_pizza_Dec-2013.JPG -->
       </div>
       <div class="col-md-8">
         <div class="row">
@@ -132,7 +136,7 @@ form {
     </div>
     <div id="locations" class="row">
       <div class="col-md-12">
-        <h2 style="text-align: center">Locations!</h2>
+        <h2 class="centered">Locations!</h2>
         <div class="row">
           <div class="col-md-6">
             <h3>Pizza Road</h3>
@@ -158,42 +162,12 @@ form {
           </div>
         </div>
         <div id="randomPizzas" class="row">
-          <div id="pizza0" class="randomPizzaContainer" style="width:33.33%;">
-            <div class="col-md-6">
-              <img src="images/pizza.png" class="img-responsive">
-            </div>
-            <div class="col-md-6">
-              <h4>The Udacity Special</h4>
-              <ul>
-                <li>Turkey</li>
-                <li>Tofu</li>
-                <li>Cauliflower</li>
-                <li>Sun Dried Tomatoes</li>
-                <li>Velveeta Cheese</li>
-                <li>Red Sauce</li>
-                <li>Whole Wheat Crust</li>
-              </ul>
-            </div>
-          </div>
-          <div id="pizza1" class="randomPizzaContainer" style="width:33.33%;">
-            <div class="col-md-6">
-              <img src="images/pizza.png" class="img-responsive">
-            </div>
-            <div class="col-md-6">
-              <h4>The Cameron Special</h4>
-              <ul>
-                <li>Chicken</li>
-                <li>Hot Sauce</li>
-                <li>White Crust</li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div id="footer" class="col-md-12">Thanks for visiting! &copy; 2014 Udacity</div>
   </div>
-  <script type="text/javascript" src="js/main.js"></script>
+  
 </body>
 
 </html>
