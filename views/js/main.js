@@ -462,10 +462,10 @@ for (var i = 0; i < 30; i++) {
 }
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
-//window.performance.mark("mark_end_generating");
-//window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
-//var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
-//console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "ms");
+window.performance.mark("mark_end_generating");
+window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
+var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
+console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "ms");
 
 // Iterator for number of times the pizzas in the background have scrolled.
 // Used by updatePositions() to decide when to log the average time per frame
@@ -504,12 +504,12 @@ function updatePositions(type) {
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
-//  window.performance.mark("mark_end_frame");
-//  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-//  if (frame % 10 === 0) {
-//    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-//    logAverageFrame(timesToUpdatePosition);
-//  }
+  window.performance.mark("mark_end_frame");
+  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  if (frame % 10 === 0) {
+    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+    logAverageFrame(timesToUpdatePosition);
+  }
 }
 
 //Generates the sliding pizzas when the page loads. - converted to normal function
