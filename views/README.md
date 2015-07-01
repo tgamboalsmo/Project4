@@ -1,3 +1,38 @@
+PIZZA.HTML Site - Web Optimized Version
+Optimized by: Tim Gamboa
+Date: July 2015
+
+Objective:  
+==========
+The purpose of this project was to take an existing mock pizza website with many performance 
+problems, identify those problems and resolve them.
+
+Goal and Measure:  
+=================
+For this site to be considered optimized, it has to meet several criteria. On the Google 
+Page Speed Insights tool (https://developers.google.com/speed/pagespeed/insights/), a score 
+of 90 or higher has to be achieved. From within Chrome Dev Tools, a frame rate of 60fps has 
+to be achieved during scrolling and the resize pizzas time has to occur in less than 5ms.
+
+General Application Usage and Functionality:
+============================================
+The mock pizza business is called Cam's Pizzeria. On load, you will see menu options at the
+top of the screen and general information about the pizza products along with an image of
+a pizzeria. In the background, there are floating pizzas in rows. They will animate left 
+and right when scrolling is performed. When scrolling down, a random list of pizzas will
+be displayed with random names and ingredients. At the top of the random pizzas will be a
+slider. You will be able to adjust the size of the pizza(small, medium and large) by
+sliding the button left or right. The pizzas will change in size respectively (not the
+floating pizzas in the background.
+
+Key Files:
+==========
+Javascript - main.js
+CSS - Inline CSS and boostrap.min.css
+HTML - pizza.html
+Images - pizza.png and pizzeria.jpg
+
+
 Performance Improvements:
 =========================
 
@@ -44,10 +79,12 @@ loop.
 10 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
 ID, etc
 
-11 - updatePositions() - added translateX and translateZ to replace the use of the
-previous .style.left.
+11 - moved definition of variable to the outside of for loops
  
 12 - minified main.js
+
+13 - deferred the creation of the random pizzas until DOMContentLoaded as the pizzas are
+below the fold on initial load of the page.
 
 CSS
 ---------
@@ -56,7 +93,7 @@ get the moving pizzas to their own layer.
 
 2 - Inlined CSS into index.html since style.css was not very big.
 
-3 - minified bootstrap.min.css
+3 - minified bootstrap.min.css and moved it to the bottom of the body in pizza.html
 
 pizza.html
 ----------
