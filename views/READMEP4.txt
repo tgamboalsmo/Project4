@@ -39,23 +39,24 @@ function, it will use scrollTop as normal.
 8 - for loop that calls pizzaElementGenerator() - moved the getElementbyID above the for 
 loop.
 
-9 - updatePositions() - added translateX and Z.
+9 - updatePositions() - removed i % 5
 
-10 - pizzaElementGenerator() and loadMovingPizzas() - removed height and width styles from
-those functions and added them to the inline CSS.
-
-11 - updatePositions() - removed i % 5
-
-12 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
+10 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
 ID, etc
 
+11 - updatePositions() - added translateX and translateZ to replace the use of the
+previous .style.left.
+ 
+12 - minified main.js
 
-style.css
+CSS
 ---------
 1 - .mover and .randomPizzaContainer - added 'will-change: transform;' to this class to 
 get the moving pizzas to their own layer.
 
 2 - Inlined CSS into index.html since style.css was not very big.
+
+3 - minified bootstrap.min.css
 
 pizza.html
 ----------
@@ -69,6 +70,8 @@ the pizzagenerator in main.js
 
 4 - Removed inline css attributes for 2 h2 elements (Locations and Our Pizzas) and 
 replaced with class="centered"
+
+5 - minified pizza.html
 
 
 images
