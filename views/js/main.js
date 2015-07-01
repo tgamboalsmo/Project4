@@ -18,7 +18,6 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
-
 //Global variable for pizza image
 var pizzaImg = "images/pizza.png";
 var pizzaIngredients = {};
@@ -376,6 +375,8 @@ var pizzaElementGenerator = function(i,img) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
+  pizzaContainer.style.width = "33.33%";
+  pizzaContainer.style.height = "325px";
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
@@ -406,13 +407,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -424,7 +425,6 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
   	var newWidth;
-  	console.log(size);
 	switch(size) {
         case "1":
           newWidth = 25;
@@ -438,7 +438,7 @@ var resizePizzas = function(size) {
         default:
           console.log("bug in sizeSwitcher");
     }
-  	randomPizza = document.querySelectorAll(".randomPizzaContainer");
+  	randomPizza = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizza.length; i++) {
       randomPizza[i].style.width = newWidth + '%';
     }
@@ -462,10 +462,10 @@ for (var i = 0; i < 30; i++) {
 }
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
-window.performance.mark("mark_end_generating");
-window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
-var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
-console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "ms");
+//window.performance.mark("mark_end_generating");
+//window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
+//var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
+//console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "ms");
 
 // Iterator for number of times the pizzas in the background have scrolled.
 // Used by updatePositions() to decide when to log the average time per frame
@@ -490,8 +490,7 @@ function updatePositions(type) {
   frame++;
   window.performance.mark("mark_start_frame");
 	
-  //Will invoke scrollTop if scroll listener calls this function 	
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
   if (type === 's') {
   	var scrollPos = (document.body.scrollTop / 1250);
   } else {
@@ -500,18 +499,17 @@ function updatePositions(type) {
   
   for (var i = 0; i < items.length; i++) {
   	var phase = Math.sin((scrollPos) + (i % 5));
-  	var bLeft = items[i].basicLeft + 100 * phase + 'px';
-    items[i].style.transform = "translateX("+bLeft+") translateZ(0)";
+	items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
-  window.performance.mark("mark_end_frame");
-  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-  }
+//  window.performance.mark("mark_end_frame");
+//  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+//  if (frame % 10 === 0) {
+//    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+//    logAverageFrame(timesToUpdatePosition);
+//  }
 }
 
 //Generates the sliding pizzas when the page loads. - converted to normal function
@@ -523,6 +521,9 @@ function loadMovingPizzas() {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = pizzaImg;
+    elem.style.height = "100px";
+    elem.style.width = "73.333px";
+    elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     parentElement.appendChild(elem);
   }
@@ -531,7 +532,6 @@ function loadMovingPizzas() {
 //Loads moving pizzas
 loadMovingPizzas();
 
- // runs updatePositions on scroll
+// runs updatePositions on scroll
 window.addEventListener('scroll', function() {
-	updatePositions('s');
-	});
+	updatePositions('s');});

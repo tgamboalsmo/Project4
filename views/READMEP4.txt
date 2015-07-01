@@ -39,13 +39,15 @@ function, it will use scrollTop as normal.
 8 - for loop that calls pizzaElementGenerator() - moved the getElementbyID above the for 
 loop.
 
-9 - height and width for loadMovingPizzas and pizzaElementGenerator - moved the CSS to the 
-inline CSS.
+9 - updatePositions() - added translateX and Z.
 
-10 - updatePositions() - added translateX and Z.
-
-11 - pizzaElementGenerator() and loadMovingPizzas() - removed height and width styles from
+10 - pizzaElementGenerator() and loadMovingPizzas() - removed height and width styles from
 those functions and added them to the inline CSS.
+
+11 - updatePositions() - removed i % 5
+
+12 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
+ID, etc
 
 
 style.css
@@ -71,7 +73,8 @@ replaced with class="centered"
 
 images
 ------
-1 - pizzeria.jpg - download new 640x480 version and compressed down to 95kb from 2mb.
+1 - pizzeria.jpg - compressed 17kb from 2mb. It's a smaller image, but it didn't need
+to be large for this website.
 
 2 - pizza.png - compressed down to 18kb.
 
