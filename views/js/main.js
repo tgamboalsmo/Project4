@@ -461,13 +461,11 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-// Moved the pizza generator to load after DOM content since it's below the fold
-//document.addEventListener('DOMContentLoaded', function() {
-	var pizzasDiv = document.getElementById("randomPizzas");
- 	for (var i = 0; i < 30; i++) {
-    pizzasDiv.appendChild(pizzaElementGenerator(i,pizzaImg));
- 	}
-//});
+var pizzasDiv = document.getElementById("randomPizzas");
+for (var i = 0; i < 100; i++) {
+	pizzasDiv.appendChild(pizzaElementGenerator(i,pizzaImg));
+}
+
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
 window.performance.mark("mark_end_generating");
@@ -506,7 +504,8 @@ function updatePositions(type) {
   	var scrollPos = 0;
   }
   var phase;
-  for (var i = 0; i < items.length; i++) {
+  var movers = items.length;
+  for (var i = 0; i < movers; i++) {
   	phase = Math.sin((scrollPos) + (i % 5));
 	items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -529,7 +528,10 @@ function loadMovingPizzas() {
   //moved parentElement and elem outside of for loop
   var parentElement = document.getElementById("movingPizzas1");
   var elem;
-  for (var i = 0; i < 30; i++) {
+  //Next 2 lines calculates number of floating pizzas based on screen height
+  var rows = Math.floor(window.screen.height / s);
+  var pizzaNumber = rows * cols;
+  for (var i = 0; i < pizzaNumber; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = pizzaImg;

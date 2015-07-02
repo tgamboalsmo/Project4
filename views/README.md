@@ -39,7 +39,7 @@ Performance Improvements:
 main.js
 -------
 1 - document.addEventListener('DOMContentLoaded', function() - decreased the number of 
-moving pizzas from 200 to 40 pizzas. No need to have that many since all 200 would never 
+moving pizzas from 200 to 48 pizzas. No need to have that many since all 200 would never 
 show up anyways.
 
 2 - updatePositions() - moved document.body.scrollTop outside the forloop which decreased
@@ -57,30 +57,29 @@ content loaded. Renamed to loadMovingPizzas().
 for each pizza. I set a new global variable to load it once, then each pizza will call 
 that variable in the FOR loop.
 
-6 - FOR loop containing pizzasDiv.appendChild(pizzaElementGenerator(i)) - cut down the
-number of pizzas from 100 to 30. 100 didn't seem practical or efficient. Users likely
-would scroll past the first 30 before deciding they might want to use a filter, if
-applicable.
-
-7 - loadMovingPizzas() - moved the querySelector outside of the FOR loop to only allow 1 
+6 - loadMovingPizzas() - moved the querySelector outside of the FOR loop to only allow 1 
 query instead of 1 for each loop.
 
-8 - updatePositions() - set up a value to be passed from calling function to identify if
+7 - updatePositions() - set up a value to be passed from calling function to identify if
 updatePositions() is being called from the initial load or scroll. This is to resolve
 the FSL that was occurring during the initial load using the scrollTop method. The initial
 load doesn't really need scrollTop, so set it to 0. When the scroll listener calls this
 function, it will use scrollTop as normal.
 
-9 - for loop that calls pizzaElementGenerator() - moved the getElementbyID above the for 
+8 - for loop that calls pizzaElementGenerator() - moved the getElementbyID above the for 
 loop.
 
-10 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
+9 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
 ID, etc
 
-11 - moved definition of variables to the outside of for loops
+10 - moved definition of variables to the outside of for loops including .length properties
+in for loops.
 
-12 - deferred the creation of the random pizzas until DOMContentLoaded as the pizzas are
+11 - deferred the creation of the random pizzas until DOMContentLoaded as the pizzas are
 below the fold on initial load of the page.
+
+12 - loadMovingPizzas() - added calculations to determine number of floating pizzas based
+on screen height
 
 CSS
 ---------
