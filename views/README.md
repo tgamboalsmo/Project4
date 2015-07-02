@@ -7,7 +7,7 @@ Objective:
 The purpose of this project was to take an existing mock pizza website with many performance 
 problems, identify those problems and resolve them.
 
-Goal and Measure:  
+Goals and Measure:  
 =================
 For this site to be considered optimized, it has to meet several criteria. On the Google 
 Page Speed Insights tool (https://developers.google.com/speed/pagespeed/insights/), a score 
@@ -53,37 +53,33 @@ consolidated the querySelectorAll to just 1 call.
 associated to this listener into a normal function be called normall versus waiting for
 content loaded. Renamed to loadMovingPizzas().
 
-4 - loadMovingPizzas() and pizzaElementGenerator - was calling for the images/pizza.png 
+5 - loadMovingPizzas() and pizzaElementGenerator - was calling for the images/pizza.png 
 for each pizza. I set a new global variable to load it once, then each pizza will call 
 that variable in the FOR loop.
 
-5 - FOR loop containing pizzasDiv.appendChild(pizzaElementGenerator(i)) - cut down the
+6 - FOR loop containing pizzasDiv.appendChild(pizzaElementGenerator(i)) - cut down the
 number of pizzas from 100 to 30. 100 didn't seem practical or efficient. Users likely
 would scroll past the first 30 before deciding they might want to use a filter, if
 applicable.
 
-6 - loadMovingPizzas() - moved the querySelector outside of the FOR loop to only allow 1 
+7 - loadMovingPizzas() - moved the querySelector outside of the FOR loop to only allow 1 
 query instead of 1 for each loop.
 
-7 - updatePositions() - set up a value to be passed from calling function to identify if
+8 - updatePositions() - set up a value to be passed from calling function to identify if
 updatePositions() is being called from the initial load or scroll. This is to resolve
 the FSL that was occurring during the initial load using the scrollTop method. The initial
 load doesn't really need scrollTop, so set it to 0. When the scroll listener calls this
 function, it will use scrollTop as normal.
 
-8 - for loop that calls pizzaElementGenerator() - moved the getElementbyID above the for 
+9 - for loop that calls pizzaElementGenerator() - moved the getElementbyID above the for 
 loop.
-
-9 - updatePositions() - removed i % 5
 
 10 - querySelectxxxx - removed querySelector's and replaced with getElementsbyClassName,
 ID, etc
 
-11 - moved definition of variable to the outside of for loops
- 
-12 - minified main.js
+11 - moved definition of variables to the outside of for loops
 
-13 - deferred the creation of the random pizzas until DOMContentLoaded as the pizzas are
+12 - deferred the creation of the random pizzas until DOMContentLoaded as the pizzas are
 below the fold on initial load of the page.
 
 CSS
@@ -93,7 +89,8 @@ get the moving pizzas to their own layer.
 
 2 - Inlined CSS into index.html since style.css was not very big.
 
-3 - minified bootstrap.min.css and moved it to the bottom of the body in pizza.html
+3 - minified bootstrap.min.css and moved it to the bottom of the body in pizza.html to
+eliminate render blocking on page load
 
 pizza.html
 ----------
@@ -107,9 +104,6 @@ the pizzagenerator in main.js
 
 4 - Removed inline css attributes for 2 h2 elements (Locations and Our Pizzas) and 
 replaced with class="centered"
-
-5 - minified pizza.html
-
 
 images
 ------

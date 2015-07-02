@@ -498,7 +498,7 @@ function updatePositions(type) {
   frame++;
   window.performance.mark("mark_start_frame");
 	
-  //Moved scrollTop outside of forloop	
+  //Moved scrollTop outside of forloop to get rid of FSL on initial load
   var items = document.getElementsByClassName('mover');
   if (type === 's') {
   	var scrollPos = (document.body.scrollTop / 1250);
@@ -539,11 +539,12 @@ function loadMovingPizzas() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     parentElement.appendChild(elem);
   }
+  //passes variable to specify calling function
   updatePositions('l');
 }
-//Loads moving pizzas
+//Loads moving pizzas for initial load of the page
 loadMovingPizzas();
 
-// runs updatePositions on scroll
+// runs updatePositions on scroll pass variable to specify calling function
 window.addEventListener('scroll', function() {
 	updatePositions('s');});
